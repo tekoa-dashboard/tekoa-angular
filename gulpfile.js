@@ -39,21 +39,21 @@ var filesPaths = {
     },
     modules: {
         spectre: {
-            src: appPaths.debug + 'js/**/*.js',
-            dest: appPaths.production + 'js',
+            src: 'node_modules/spectre.css/spectre.less',
+            dest: appPaths.production + 'css',
             debug: 'node_modules/spectre.css/src',
             production: appPaths.production + 'css/spectre.min.css'
         }
     },
     libs: {
-        src: appPaths.debug + 'js/**/*.js',
-        dest: appPaths.production + 'js',
+        src: appPaths.debug + 'libs/**',
+        dest: appPaths.production + 'libs',
         debug: appPaths.debug + 'libs/**',
-        production: appPaths.production + 'libs/**',
-    }
+        production: appPaths.production + 'libs/**'
+    },
     images: {
-        src: appPaths.debug + 'js/**/*.js',
-        dest: appPaths.production + 'js',
+        src: appPaths.debug + 'design/**',
+        dest: appPaths.production + 'design',
         debug: appPaths.debug + 'design/**',
         production: appPaths.production + 'design/**'
     }
@@ -61,6 +61,7 @@ var filesPaths = {
 
 var pugPattern = [appPaths.debug + 'pug/**/*.pug', '!' + appPaths.debug + 'pug/index.pug', '!' + appPaths.debug + 'pug/includes/**'];
 var server = gls.static(appPaths.production, 8080);
+
 
 
 
@@ -86,7 +87,7 @@ gulp.task('start:server', function(done) {
     });
 
     gulp.watch([filesPaths.styles.debug], function (file) {
-        runSequence('make:less');
+        runSequence('make:less', 'build:spectre');
 
         gulp.watch([filesPaths.styles.production], function (file) {
             server.notify.apply(server, [file]);
@@ -140,18 +141,18 @@ gulp.task('server:reload', function (file) {
 // TASKS //
 ///////////
 gulp.task('make:pug', function() {
-    gulp.src(appPaths.debug + 'pug/index.pug')
+    gulp.src(filesPaths.templates.src)
     .pipe(puglint())
     .pipe($.pug())
     .pipe(gulp.dest(appPaths.production));
     gulp.src(pugPattern)
     .pipe(puglint())
     .pipe($.pug())
-    .pipe(gulp.dest(appPaths.production + 'templates'));
+    .pipe(gulp.dest(filesPaths.templates.dest));
 });
 
 gulp.task('make:less', function() {
-    return gulp.src(appPaths.debug + 'less/' + appName + '.less')
+    return gulp.src(filesPaths.styles.src)
     .pipe($.less())
     .pipe($.concatCss(appName + '.css'))
     .pipe(cssComb())
@@ -172,11 +173,11 @@ gulp.task('make:less', function() {
         path.basename += '.min';
     }))
     .pipe(cssCombLint())
-    .pipe(gulp.dest(appPaths.production + 'css'));
+    .pipe(gulp.dest(filesPaths.styles.dest));
 });
 
 gulp.task('make:js', function () {
-    return gulp.src(appPaths.debug + 'js/**/*.js')
+    return gulp.src(filesPaths.code.src)
     .pipe($.concat(appName + '.js'))
     .pipe(jsValidate())
     .pipe($.minify({
@@ -187,11 +188,11 @@ gulp.task('make:js', function () {
         preserveComments: ['some'],
         mangle: false
     }))
-    .pipe(gulp.dest(appPaths.production + 'js'));
+    .pipe(gulp.dest(filesPaths.code.dest));
 });
 
 gulp.task('build:spectre', function () {
-    gulp.src('node_modules/spectre.css/spectre.less')
+    gulp.src(filesPaths.modules.spectre.src)
     .pipe($.less())
     .pipe(cssComb())
     .pipe(cssBeautify({
@@ -211,17 +212,17 @@ gulp.task('build:spectre', function () {
         path.basename += '.min';
     }))
     .pipe(cssCombLint())
-    .pipe(gulp.dest(appPaths.production + 'css'));
+    .pipe(gulp.dest(filesPaths.modules.spectre.dest));
 });
 
 gulp.task('copy:design', function () {
-  return gulp.src(filesPaths.images.debug)
-  .pipe(gulp.dest(filesPaths.images.production + 'design'));
+  return gulp.src(filesPaths.images.src)
+  .pipe(gulp.dest(filesPaths.images.dest));
 });
 
 gulp.task('copy:libs', function () {
-  return gulp.src(filesPaths.libs.debug)
-  .pipe(gulp.dest(filesPaths.libs.production));
+  return gulp.src(filesPaths.libs.src)
+  .pipe(gulp.dest(filesPaths.libs.dest));
 });
 
 
@@ -233,7 +234,7 @@ gulp.task('copy:libs', function () {
 gulp.task('default', ['build']);
 
 gulp.task('build', function () {
-    runSequence('make:js', 'make:pug', 'make:less', 'build:modules', 'copy:design');
+    runSequence('make:js', 'make:pug', 'make:less', 'build:modules', 'copy:design', 'copy:libs');
 });
 
 gulp.task('build:modules', function () {

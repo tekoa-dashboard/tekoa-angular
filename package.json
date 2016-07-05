@@ -1,13 +1,16 @@
 {
   "name": "tekoa-angular",
   "version": "1.0.0",
-  "description": "",
+  "description": "The official front-end client of the Tekoá, the fully dynamic dashboard",
   "main": "index.js",
   "scripts": {
     "test": ""
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Luigui Delyer",
+  "license": "MIT",
+  "dependencies": {
+    "spectre.css": "^0.1.24"
+  },
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.1.0",
@@ -29,7 +32,6 @@
     "gulp-watch": "^4.3.5",
     "openurl": "^1.1.1",
     "pug": "^2.0.0-alpha8",
-    "run-sequence": "^1.2.1",
-    "spectre.css": "^0.1.24"
+    "run-sequence": "^1.2.1"
   }
 }
