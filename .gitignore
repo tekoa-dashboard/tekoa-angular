@@ -1,4 +1,4 @@
 node_modules
+!node_modules/spectre.css/**
 .DS_Store
 dist
-!node_modules/spectre.css/*
