@@ -1,6 +1,8 @@
 # Tekoá | Angular JS
 The official front-end client of the Tekoá, the fully dynamic dashboard
 
+### PUG + Angular JS + Spectre CSS + LESS + Gulp
+
 ## Dependencies
 | NPM Plugin | Version |
 | :--- | ---: |
@@ -41,3 +43,18 @@ npm install
 ```sh
 gulp serve
 ```
+
+##### PUG
+###### https://github.com/pugjs/pug
+
+##### Angular JS
+###### http://angularjs.org/
+
+##### Spectre CSS
+###### https://picturepan2.github.io/spectre/
+
+##### LESS
+###### http://lesscss.org/
+
+##### Gulp
+###### http://gulpjs.com/
