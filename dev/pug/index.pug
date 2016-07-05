@@ -1,0 +1,7 @@
+doctype html
+html(lang='pt')
+    include includes/head.pug
+    body(ng-app='tekoa')
+        h6 {{appName}}
+        .app-wrapper
+            .app-content(ng-view)

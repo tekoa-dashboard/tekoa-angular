@@ -1,0 +1,22 @@
+#nav.column.col-xs-3
+    #profile-info
+        #profile-background(style='background-image:url(../design/profile.jpg)')
+        #profile-card
+            figure.avatar.avatar-xl
+                img(src='design/profile.jpg')
+            #user-info
+                h6.level administrador
+                h6 Luigui Delyer
+                h6.mini luigui@wedologos.com.br
+                small.label WeDoLogos
+    #menu-itens
+        mixin section(url, icon, name)
+            li
+                a(href=url)
+                    i(class='fa fa-' + icon)
+                    =name
+
+        ul
+            +section('#/home', 'home', 'Home')
+            +section('#/users', 'users', 'Usuários')
+            +section('#/logout', 'sign-out', 'Logout')
