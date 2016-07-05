@@ -41,6 +41,7 @@ npm install
 
 ## Run
 ```sh
+gulp build
 gulp serve
 ```
 
