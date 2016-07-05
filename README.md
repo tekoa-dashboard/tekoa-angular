@@ -3,7 +3,7 @@ The official front-end client of the Tekoá, the fully dynamic dashboard
 
 ## Dependencies
 | NPM Plugin | Version |
-| --- | ---: |
+| :--- | ---: |
 | **Pug** | `2.0.0-alpha8` |
 | **Gulp Pug** | `3.0.3` |
 | **Gulp Pug Lint** | `0.1.6` |
