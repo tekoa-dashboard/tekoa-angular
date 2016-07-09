@@ -29,6 +29,7 @@
     "gulp-watch": "^4.3.5",
     "openurl": "^1.1.1",
     "pug": "^2.0.0-alpha8",
-    "run-sequence": "^1.2.1"
+    "run-sequence": "^1.2.1",
+    "spectre.css": "git+https://github.com/tekoa-dashboard/spectre.git"
   }
 }
