@@ -3,6 +3,23 @@ The official front-end client of the Tekoá, the fully dynamic dashboard
 
 ### PUG + Angular JS + Spectre CSS + LESS + Gulp
 
+## Install
+```sh
+npm install
+```
+
+## Run
+```sh
+gulp build
+gulp serve
+```
+
+## Debug Server
+If you want more output, set the `DEBUG` environment variables to `*` or `gulp-live-server`.
+```sh
+DEBUG=gulp-live-server gulp serve
+```
+
 ## Dependencies
 | NPM Plugin | Version |
 | :--- | ---: |
@@ -33,17 +50,6 @@ The official front-end client of the Tekoá, the fully dynamic dashboard
 | **Run Sequence** | `1.2.1` |
 | **Openurl** | `1.1.1` |
 
-
-## Install
-```sh
-npm install
-```
-
-## Run
-```sh
-gulp build
-gulp serve
-```
 
 ##### PUG
 ###### https://github.com/pugjs/pug

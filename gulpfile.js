@@ -11,63 +11,70 @@ cssCombLint = require('gulp-csscomb-lint'),
 jsValidate = require('gulp-jsvalidate'),
 gls = require('gulp-live-server');
 
-var appName = "tekoa"
+var app = {
+    name: "tekoa"
+};
 
-var appPaths = {
+var paths = {
     debug: 'dev/',
     production: 'dist/'
 };
 
-var filesPaths = {
+var server = {
+    folder: paths.production,
+    port: 8000,
+    address: 'http://localhost:8000'
+};
+
+var files = {
     js: {
-        src: appPaths.debug + 'js/**/*.js',
-        dest: appPaths.production + 'js',
-        debug: appPaths.debug + 'js/**',
-        production: appPaths.production + 'js/' + appName + '.min.js',
+        src: paths.debug + 'js/**/*.js',
+        dest: paths.production + 'js',
+        debug: paths.debug + 'js/**',
+        production: paths.production + 'js/' + app.name + '.min.js',
     },
     less: {
-        src: appPaths.debug + 'less/' + appName + '.less',
-        dest: appPaths.production + 'css',
-        debug: appPaths.debug + 'less/*.less',
-        production: appPaths.production + 'css/' + appName + '.min.css',
+        src: paths.debug + 'less/' + app.name + '.less',
+        dest: paths.production + 'css',
+        debug: paths.debug + 'less/*.less',
+        production: paths.production + 'css/' + app.name + '.min.css',
     },
     templates: {
-        src: appPaths.debug + 'pug/index.pug',
-        dest: appPaths.production + 'templates',
-        debug: appPaths.debug + 'pug/**',
-        production: appPaths.production + 'index.html'
+        src: paths.debug + 'pug/index.pug',
+        dest: paths.production + 'templates',
+        debug: paths.debug + 'pug/**',
+        production: paths.production + 'index.html'
     },
     modules: {
         spectre: {
             src: 'node_modules/spectre.css/spectre.less',
-            dest: appPaths.production + 'css',
-            debug: 'node_modules/spectre.css/src',
-            production: appPaths.production + 'css/spectre.min.css'
+            dest: paths.production + 'css',
+            debug: 'node_modules/spectre.css/src/**',
+            production: paths.production + 'css/spectre.min.css'
         }
     },
     libs: {
-        src: appPaths.debug + 'libs/**',
-        dest: appPaths.production + 'libs',
-        debug: appPaths.debug + 'libs/**',
-        production: appPaths.production + 'libs/**'
+        src: paths.debug + 'libs/**',
+        dest: paths.production + 'libs',
+        debug: paths.debug + 'libs/**',
+        production: paths.production + 'libs/**'
     },
     extras: {
         css: {
-            src: appPaths.debug + 'css/**/**',
-            dest: appPaths.production + 'css'
+            src: paths.debug + 'css/**/**',
+            dest: paths.production + 'css'
         },
         design: {
-            src: appPaths.debug + 'design/**',
-            dest: appPaths.production + 'design',
-            debug: appPaths.debug + 'design/**',
-            production: appPaths.production + 'design/**'
+            src: paths.debug + 'design/**',
+            dest: paths.production + 'design',
+            debug: paths.debug + 'design/**',
+            production: paths.production + 'design/**'
         }
     }
 };
 
-var pugPattern = [appPaths.debug + 'pug/**/*.pug', '!' + appPaths.debug + 'pug/index.pug', '!' + appPaths.debug + 'pug/includes/**'];
-var server = gls.static(appPaths.production, 8081);
-
+var pugPattern = [paths.debug + 'pug/**/*.pug', '!' + paths.debug + 'pug/index.pug', '!' + paths.debug + 'pug/includes/**'];
+var liveServer = gls.static(server.folder, server.port);
 
 
 
@@ -81,62 +88,68 @@ gulp.task('serve', function (cb) {
 });
 
 gulp.task('start:server', function(done) {
-    server.start();
-    openURL.open('http://localhost:8081');
+    liveServer.start();
+    runSequence(['watch']);
+    openURL.open(server.address);
+});
 
-    gulp.watch([filesPaths.templates.debug], function (file) {
+
+
+
+
+///////////
+// WATCH //
+///////////
+gulp.task('watch', function () {
+    gulp.watch([files.templates.debug], function (file) {
         runSequence('make:pug');
 
-        gulp.watch([filesPaths.templates.production], function (file) {
-            server.notify.apply(server, [file]);
+        gulp.watch([files.templates.production], function (file) {
+            liveServer.notify.apply(liveServer, [file]);
         });
     });
 
-    gulp.watch([filesPaths.less.debug], function (file) {
+    gulp.watch([files.less.debug], function (file) {
         runSequence('make:less', 'build:spectre');
 
-        gulp.watch([filesPaths.less.production], function (file) {
-            server.notify.apply(server, [file]);
+        gulp.watch([files.less.production], function (file) {
+            liveServer.notify.apply(liveServer, [file]);
         });
     });
 
-    gulp.watch([filesPaths.modules.spectre.debug], function (file) {
+    gulp.watch([files.modules.spectre.debug], function (file) {
         runSequence('build:spectre');
 
-        gulp.watch([filesPaths.modules.spectre.production], function (file) {
-            server.notify.apply(server, [file]);
+        gulp.watch([files.modules.spectre.production], function (file) {
+            liveServer.notify.apply(liveServer, [file]);
         });
     });
 
-    gulp.watch([filesPaths.js.debug], function (file) {
+    gulp.watch([files.js.debug], function (file) {
         runSequence('make:js');
 
-        gulp.watch([filesPaths.js.production], function (file) {
-            server.notify.apply(server, [file]);
+        gulp.watch([files.js.production], function (file) {
+            liveServer.notify.apply(liveServer, [file]);
         });
     });
 
-    gulp.watch([filesPaths.design.debug], function (file) {
+    gulp.watch([files.extras.design.debug], function (file) {
         runSequence('copy:design');
 
-        gulp.watch([filesPaths.design.production], function (file) {
-            server.notify.apply(server, [file]);
+        gulp.watch([files.extras.design.production], function (file) {
+            liveServer.notify.apply(liveServer, [file]);
         });
     });
 
-    if (filesPaths.libs.debug) {
-        gulp.watch([filesPaths.libs.debug], function (file) {
+    if (files.libs.debug) {
+        gulp.watch([files.libs.debug], function (file) {
             runSequence('copy:libs');
 
-            gulp.watch([filesPaths.libs.production], function (file) {
-                server.notify.apply(server, [file]);
+            gulp.watch([files.libs.production], function (file) {
+                liveServer.notify.apply(liveServer, [file]);
             });
         });
     }
-});
-
-gulp.task('server:reload', function (file) {
-    server.notify.apply(server, [file]);
 });
 
 
@@ -147,20 +160,20 @@ gulp.task('server:reload', function (file) {
 // TASKS //
 ///////////
 gulp.task('make:pug', function() {
-    gulp.src(filesPaths.templates.src)
+    gulp.src(files.templates.src)
     .pipe(puglint())
     .pipe($.pug())
-    .pipe(gulp.dest(appPaths.production));
+    .pipe(gulp.dest(paths.production));
     gulp.src(pugPattern)
     .pipe(puglint())
     .pipe($.pug())
-    .pipe(gulp.dest(filesPaths.templates.dest));
+    .pipe(gulp.dest(files.templates.dest));
 });
 
 gulp.task('make:less', function() {
-    return gulp.src(filesPaths.less.src)
+    return gulp.src(files.less.src)
     .pipe($.less())
-    .pipe($.concatCss(appName + '.css'))
+    .pipe($.concatCss(app.name + '.css'))
     .pipe(cssComb())
     .pipe(cssBeautify({
         indent: '  ',
@@ -179,12 +192,12 @@ gulp.task('make:less', function() {
         path.basename += '.min';
     }))
     .pipe(cssCombLint())
-    .pipe(gulp.dest(filesPaths.less.dest));
+    .pipe(gulp.dest(files.less.dest));
 });
 
 gulp.task('make:js', function () {
-    return gulp.src(filesPaths.js.src)
-    .pipe($.concat(appName + '.js'))
+    return gulp.src(files.js.src)
+    .pipe($.concat(app.name + '.js'))
     .pipe(jsValidate())
     .pipe($.minify({
         ext:{
@@ -194,11 +207,11 @@ gulp.task('make:js', function () {
         preserveComments: ['some'],
         mangle: false
     }))
-    .pipe(gulp.dest(filesPaths.js.dest));
+    .pipe(gulp.dest(files.js.dest));
 });
 
 gulp.task('build:spectre', function () {
-    gulp.src(filesPaths.modules.spectre.src)
+    gulp.src(files.modules.spectre.src)
     .pipe($.less())
     .pipe(cssComb())
     .pipe(cssBeautify({
@@ -218,22 +231,22 @@ gulp.task('build:spectre', function () {
         path.basename += '.min';
     }))
     .pipe(cssCombLint())
-    .pipe(gulp.dest(filesPaths.modules.spectre.dest));
+    .pipe(gulp.dest(files.modules.spectre.dest));
 });
 
 gulp.task('copy:design', function () {
-  return gulp.src(filesPaths.extras.design.src)
-  .pipe(gulp.dest(filesPaths.extras.design.dest));
+    return gulp.src(files.extras.design.src)
+    .pipe(gulp.dest(files.extras.design.dest));
 });
 
 gulp.task('copy:css', function () {
-    return gulp.src(filesPaths.extras.css.src)
-    .pipe(gulp.dest(filesPaths.extras.css.dest));
+    return gulp.src(files.extras.css.src)
+    .pipe(gulp.dest(files.extras.css.dest));
 });
 
 gulp.task('copy:libs', function () {
-  return gulp.src(filesPaths.libs.src)
-  .pipe(gulp.dest(filesPaths.libs.dest));
+    return gulp.src(files.libs.src)
+    .pipe(gulp.dest(files.libs.dest));
 });
 
 

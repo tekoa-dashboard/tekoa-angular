@@ -40,11 +40,10 @@
                         i.fa.fa-plus
 
         #one-data.column
-            a(href='#/users')
-                #user-info
-                    #close-taba
-                        button
-                            i.fa.fa-times
+            #user-info
+                #close-tab
+                    a(href='#/users')
+                        i.fa.fa-times
 
                 #user-background(style='background-image:url(../design/profile.jpg)')
                 #user-card
@@ -115,12 +114,6 @@
                                     i.form-icon
                                     |  Liberado
 
-                        .columns
-                            .btn-group.btn-group-block.column.col-12
-                                button.btn Cancelar
-                                button.btn Salvar
-                                button.btn Excluir
-
                 #permission-data(ng-class="{'display-block': changeActiveTab == '2', 'display-none': changeActiveTab != '2'}")
                     .form-group.container
                         .columns.select
@@ -166,13 +159,15 @@
                                     i.form-icon
                                     |  Salvar edições
 
-                        .columns
-                            .btn-group.btn-group-block.column.col-12
-                                button.btn Cancelar
-                                button.btn Salvar
-
                 #log-data(ng-class="{'display-block': changeActiveTab == '3', 'display-none': changeActiveTab != '3'}")
                     .form-group.container
                         .columns
                             label.form-label.column.col-12(for='input-example-3') Últimas 100 atividades do usuário
                                 textarea#input-example-3.form-input(readonly='readonly' placeholder='Informações do log', rows='27')
+                #page-action
+                    .form-group.container
+                        .columns
+                            .btn-group.btn-group-block.column.col-12
+                                button.btn Cancelar
+                                button.btn Salvar
+                                button.btn Excluir
