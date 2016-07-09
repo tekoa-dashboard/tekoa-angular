@@ -1,3 +1,4 @@
+![alt text](https://raw.githubusercontent.com/tekoa-dashboard/tekoa-angular/master/dev/design/logo-big-tekoa-01.png =150x "Tekoá")
 
 # Tekoá | Angular JS
 The official front-end client of the Tekoá, the fully dynamic dashboard
