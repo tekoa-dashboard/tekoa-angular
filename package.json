@@ -8,9 +8,6 @@
   },
   "author": "Luigui Delyer",
   "license": "MIT",
-  "dependencies": {
-    "spectre.css": "^0.1.24"
-  },
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.1.0",
