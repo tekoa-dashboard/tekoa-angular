@@ -34,6 +34,10 @@ var tekoa = angular.module('tekoa', ['ngResource', 'ngRoute', 'ngSanitize'])
     templateUrl: '/templates/users/users.html',
     controller: 'usersController'
   })
+  .when('/users/:id', {
+    templateUrl: '/templates/users/users.html',
+    controller: 'usersController'
+  })
   .otherwise({
     redirectTo: '/login'
   });

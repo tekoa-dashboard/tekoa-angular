@@ -1,7 +1,7 @@
 .container
     .columns
         include ../includes/nav.pug
-        #all-data.column.col-xs-3
+        #all-data.column(ng-class="{'col-xs-3': actualRoute, 'col-xs-9': !actualRoute}")
             #header-section
                 .input-group
                     input.form-input(type='text', placeholder='Pesquisar usuários')
@@ -34,12 +34,18 @@
                     +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
                     +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
                     +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
-            #action-button
-                button.btn.btn-primary.btn-lg
-                    i.fa.fa-plus
+            #accent-button
+                a(href='#/users/new')
+                    button.btn.btn-primary.btn-lg
+                        i.fa.fa-plus
 
-        #one-data.column.col-xs-6
-            #user-info
+        #one-data.column
+            a(href='#/users')
+                #user-info
+                    #close-taba
+                        button
+                            i.fa.fa-times
+
                 #user-background(style='background-image:url(../design/profile.jpg)')
                 #user-card
                     figure.avatar
@@ -52,16 +58,19 @@
 
             #page-info
                 ul.tab.tab-block
-                    li.tab-item.active
-                        a(ng-click='changeTab($event)', data-tab='personal-data') Dados pessoais
+                    li.tab-item(ng-init="changeActiveTab = '1'", ng-class="{'active': changeActiveTab == '1'}")
+                        //- a(ng-click='changeTab($event)', data-tab='personal-data') Dados pessoais
+                        a(ng-click='changeActiveTab = 1') Dados pessoais
 
-                    li.tab-item
-                        a(ng-click='changeTab($event)', data-tab='permission-data') Permissões
+                    li.tab-item(ng-class="{'active': changeActiveTab == '2'}")
+                        //- a(ng-click='changeTab($event)', data-tab='permission-data') Permissões
+                        a(ng-click='changeActiveTab = 2') Permissões
 
-                    li.tab-item
-                        a(ng-click='changeTab($event)', data-tab='log-data') Log
+                    li.tab-item(ng-class="{'active': changeActiveTab == '3'}")
+                        //- a(ng-click='changeTab($event)', data-tab='log-data') Log
+                        a(ng-click='changeActiveTab = 3') Log
 
-                #personal-data
+                #personal-data(ng-class="{'display-block': changeActiveTab == '1', 'display-none': changeActiveTab != '1'}")
                     .form-group.container
                         .columns
                             label.form-label.column.col-12(for='input-example-1') Nome completo
@@ -112,7 +121,7 @@
                                 button.btn Salvar
                                 button.btn Excluir
 
-                #permission-data
+                #permission-data(ng-class="{'display-block': changeActiveTab == '2', 'display-none': changeActiveTab != '2'}")
                     .form-group.container
                         .columns.select
                             select.form-select.col-6
@@ -162,7 +171,7 @@
                                 button.btn Cancelar
                                 button.btn Salvar
 
-                #log-data
+                #log-data(ng-class="{'display-block': changeActiveTab == '3', 'display-none': changeActiveTab != '3'}")
                     .form-group.container
                         .columns
                             label.form-label.column.col-12(for='input-example-3') Últimas 100 atividades do usuário
