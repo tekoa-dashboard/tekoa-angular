@@ -13,11 +13,20 @@ npm install
 gulp build
 gulp serve
 ```
+or
+```sh
+npm run build
+npm run serve
+```
 
 ## Debug Server
 If you want more output, set the `DEBUG` environment variables to `*` or `gulp-live-server`.
 ```sh
 DEBUG=gulp-live-server gulp serve
+```
+or
+```sh
+npm run serve
 ```
 
 ## Dependencies

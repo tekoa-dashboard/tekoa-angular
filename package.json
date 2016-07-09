@@ -4,7 +4,8 @@
   "description": "The official front-end client of the Tekoá, the fully dynamic dashboard",
   "main": "index.js",
   "scripts": {
-    "test": ""
+    "build": "gulp build",
+    "serve": "DEBUG=gulp-live-server gulp serve"
   },
   "author": "Luigui Delyer",
   "license": "MIT",
