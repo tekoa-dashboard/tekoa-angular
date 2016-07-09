@@ -1,4 +1,4 @@
-![]<img src="https://raw.githubusercontent.com/tekoa-dashboard/tekoa-angular/master/dev/design/logo-big-tekoa-01.png" height="350">
+<img src="https://raw.githubusercontent.com/tekoa-dashboard/tekoa-angular/master/dev/design/logo-big-tekoa-01.png" height="350">
 
 # Tekoá | Angular JS
 The official front-end client of the Tekoá, the fully dynamic dashboard
