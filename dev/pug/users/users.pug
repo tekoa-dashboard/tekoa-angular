@@ -1,193 +1,213 @@
 .container
     .columns
         include ../includes/nav.pug
-        #all-data.column(ng-init="content.column = 'false'", ng-class="{'col-xs-3': content.column == 'true', 'col-xs-9': content.column == 'false'}")
-            #header-section
-                .input-group
-                    input.form-input(type='text', placeholder='{{content.column}} - Pesquisar usuários')
-                    button.btn.btn-primary.input-group-btn
-                        i.fa.fa-search
-                    button.btn.input-group-btn(ng-class="{'btn-primary': filter.options == 'true'}", ng-init="filter.options = 'false'", ng-click="filter.options = { 'true': 'false', 'false': 'true'}[filter.options]")
-                        i.fa.fa-filter
-                #filter-section(ng-class="{'filter-show': filter.options == 'true'}")
-                    .btn-group.btn-group-block
-                        button.btn.btn-sm(ng-class="{'btn-primary': filter.type1 == 'true'}", ng-init="filter.type1 = 'false'", ng-click="filter.type1 = { 'true': 'false', 'false': 'true'}[filter.type1]") Registro
-                        button.btn.btn-sm(ng-class="{'btn-primary': filter.type2 == 'true'}", ng-init="filter.type2 = 'false'", ng-click="filter.type2 = { 'true': 'false', 'false': 'true'}[filter.type2]") Nome
-                        button.btn.btn-sm(ng-class="{'btn-primary': filter.type3 == 'true'}", ng-init="filter.type3 = 'false'", ng-click="filter.type3 = { 'true': 'false', 'false': 'true'}[filter.type3]")  Status
+        #full-section.column.col-xs-9
+            .container.flex-section
+                .columns.header-section
+                    #header-data.column.col-xs-12
+                        ul.tab
+                            li.tab-item
+                                a()
+                                    | Visão geral
 
-            #list-section(scrollable)
-                mixin section(url, id, status, name, description)
-                    li
-                        a(ng-click="content.column = 'true'")
-                            figure.avatar.avatar-lg
-                                img(src='design/profile.jpg')
-                                span.avatar-icon= id
-                            #info
-                                h6= status
-                                h5= name
-                                h6.mini= description
+                            li.tab-item.active
+                                a()
+                                    | Registros
 
-                ul
-                    +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
-                    +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
-                    +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
-                    +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
-                    +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
-                    +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
-                    +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
-                    +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
-                    +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
-                    +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
-                    +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
-                    +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
-                    +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
-            #accent-button
-                a(ng-click="content.column = 'true'")
-                    button.btn.btn-primary.btn-lg
-                        i.fa.fa-plus
+                            li.tab-item
+                                a()
+                                    | Estatísticas
 
-        #one-data.column
-            #pane-info(scrollable)
-                #user-info
-                    #close-tab
-                        a(ng-click="content.column = 'false'")
-                            i.fa.fa-times
+                            li.tab-item
+                                a()
+                                    | Mapa
 
-                    #user-background(style='background-image:url(../design/profile.jpg)')
-                    #user-card
-                        figure.avatar
-                            img(src='design/profile.jpg')
-                        #user-data
-                            h6.level administrador
-                            h6 Luigui Delyer
-                            h6.mini luigui@wedologos.com.br
-                            small.label WeDoLogos
 
-                #page-info
-                    ul.tab.tab-block
-                        li.tab-item(ng-init="tab.active = '1'", ng-class="{'active': tab.active == '1'}")
-                            //- a(ng-click='changeTab($event)', data-tab='personal-data') Dados pessoais
-                            a(ng-click='tab.active = 1') Dados pessoais
+                .columns.content-section
+                    #all-data.column(ng-init="actualRoute ? content.column = 'true' : content.column = 'false'", ng-class="{'col-xs-4': content.column == 'true', 'col-xs-12': content.column == 'false'}")
+                        #header-bar
+                            .input-group
+                                input.form-input(type='text', placeholder='Pesquisar usuários')
+                                button.btn.btn-primary.input-group-btn
+                                    i.fa.fa-search
+                                button.btn.input-group-btn(ng-class="{'btn-primary': filter.options == 'true'}", ng-init="filter.options = 'false'", ng-click="filter.options = { 'true': 'false', 'false': 'true'}[filter.options]")
+                                    i.fa.fa-filter
+                            #filter-section(ng-class="{'filter-show': filter.options == 'true'}")
+                                .btn-group.btn-group-block
+                                    button.btn.btn-sm(ng-class="{'btn-primary': filter.type1 == 'true'}", ng-init="filter.type1 = 'false'", ng-click="filter.type1 = { 'true': 'false', 'false': 'true'}[filter.type1]") Registro
+                                    button.btn.btn-sm(ng-class="{'btn-primary': filter.type2 == 'true'}", ng-init="filter.type2 = 'false'", ng-click="filter.type2 = { 'true': 'false', 'false': 'true'}[filter.type2]") Nome
+                                    button.btn.btn-sm(ng-class="{'btn-primary': filter.type3 == 'true'}", ng-init="filter.type3 = 'false'", ng-click="filter.type3 = { 'true': 'false', 'false': 'true'}[filter.type3]")  Status
 
-                        li.tab-item(ng-class="{'active': tab.active == '2'}")
-                            //- a(ng-click='changeTab($event)', data-tab='permission-data') Permissões
-                            a(ng-click='tab.active = 2') Permissões
+                        #list-section(scrollable)
+                            mixin section(url, id, status, name, description)
+                                li
+                                    a(href= url)
+                                        figure.avatar.avatar-lg
+                                            img(src='design/profile.jpg')
+                                            span.avatar-icon= id
+                                        #info
+                                            h6= status
+                                            h5= name
+                                            h6.mini= description
 
-                        li.tab-item(ng-class="{'active': tab.active == '3'}")
-                            //- a(ng-click='changeTab($event)', data-tab='log-data') Log
-                            a(ng-click='tab.active = 3') Log
+                            ul
+                                +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
+                                +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
+                                +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
+                                +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
+                                +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
+                                +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
+                                +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
+                                +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
+                                +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
+                                +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
+                                +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
+                                +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
+                                +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
+                        #accent-button
+                            a(ng-click="content.column = 'true'")
+                                button.btn.btn-primary.btn-lg
+                                    i.fa.fa-plus
 
-                    #personal-data(ng-class="{'display-block': tab.active == '1', 'display-none': tab.active != '1'}")
-                        .form-group.container
-                            .columns
-                                label.form-label.column.col-12(for='input-example-1') Nome completo
-                                    input.form-input(type='text', placeholder='Ex: José da Lima Silva')
-                            .columns
-                                label.form-label.column.col-6(for='input-example-1') E-mail
-                                    input.form-input(type='text', placeholder='Ex: seu@email.com')
+                    #one-data.column
+                        #pane-info(scrollable)
+                            #user-info
+                                #close-tab
+                                    a(href='#/users')
+                                        i.fa.fa-times
 
-                                label.form-label.column.col-6(for='input-example-1') Usuário
-                                    .input-group
-                                        input.form-input(type='text', ng-init='check.user = []', ng-model='check.user', placeholder='Ex: joselima')
-                                        button.btn.btn-primary.input-group-btn.tooltip.tooltip-left(data-tooltip='Verificar a disponibilidade')
-                                            i.fa.fa-times-circle(ng-class="{'fa-chevron-circle-right': check.user.length >= '3'}")
+                                #user-background(style='background-image:url(../design/profile.jpg)')
+                                #user-card
+                                    figure.avatar
+                                        img(src='design/profile.jpg')
+                                    #user-data
+                                        h6.level administrador
+                                        h6 Luigui Delyer
+                                        h6.mini luigui@wedologos.com.br
+                                        small.label WeDoLogos
 
-                            .columns
-                                label.form-label.column.col-6(for='input-example-1') Senha
-                                    .input-group
-                                        input.form-input(type='password', ng-init='check.pass = []', ng-model='check.pass')
-                                        button.btn.cursor-default.btn-primary.input-group-btn.tooltip.tooltip-left(data-tooltip='Mínimo 6 caracteres')
-                                            i.fa.fa-times-circle(ng-class="{'fa-check-circle': check.pass.length >= '6'}")
+                            #page-info
+                                ul.tab.tab-block
+                                    li.tab-item(ng-init="tab.active = '1'", ng-class="{'active': tab.active == '1'}")
+                                        a(ng-click="tab.active = '1'") Dados pessoais
 
-                                label.form-label.column.col-6(for='input-example-1') Senha novamente
-                                    .input-group
-                                        input.form-input(type='password', ng-init='check.passCompare = []', ng-model='check.passCompare')
-                                        button.btn.cursor-default.btn-primary.input-group-btn.tooltip.tooltip-left(data-tooltip="Repita a senha")
-                                            i.fa.fa-times-circle(ng-class="{'fa-check-circle': check.pass == check.passCompare}")
+                                    li.tab-item(ng-class="{'active': tab.active == '2'}")
+                                        a(ng-click="tab.active = '2'") Permissões
 
-                            .columns
-                                label.form-label.column.col-12(for='input-example-3') Descrição
-                                    textarea.form-input(placeholder='Fale um pouco sobre o usuário...', rows='7')
+                                    li.tab-item(ng-class="{'active': tab.active == '3'}")
+                                        a(ng-click="tab.active = '3'") Log
 
-                            .columns
-                                label.form-label.column.col-12 Sexo
-                                    br
-                                    label.form-radio
-                                        input(type='radio', name='gender')
-                                        i.form-icon
-                                        |  Masculino
+                                #personal-data(ng-class="{'display-block': tab.active == '1', 'display-none': tab.active != '1'}")
+                                    .form-group.container
+                                        .columns
+                                            label.form-label.column.col-12(for='input-example-1') Nome completo
+                                                input.form-input(type='text', placeholder='Ex: José da Lima Silva')
+                                        .columns
+                                            label.form-label.column.col-6(for='input-example-1') E-mail
+                                                input.form-input(type='text', placeholder='Ex: seu@email.com')
 
-                                    label.form-radio
-                                        input(type='radio', name='gender')
-                                        i.form-icon
-                                        |  Feminino
+                                            label.form-label.column.col-6(for='input-example-1') Usuário
+                                                .input-group
+                                                    input.form-input(type='text', ng-init='check.user = []', ng-model='check.user', placeholder='Ex: joselima')
+                                                    button.btn.btn-primary.input-group-btn.tooltip.tooltip-left(data-tooltip='Verificar a disponibilidade')
+                                                        i.fa.fa-times-circle(ng-class="{'fa-chevron-circle-right': check.user.length >= '3'}")
 
-                                    label.form-radio
-                                        input(type='radio', name='gender', checked='')
-                                        i.form-icon
-                                        |  Outro
+                                        .columns
+                                            label.form-label.column.col-6(for='input-example-1') Senha
+                                                .input-group
+                                                    input.form-input(type='password', ng-init='check.pass = []', ng-model='check.pass')
+                                                    button.btn.cursor-default.btn-primary.input-group-btn.tooltip.tooltip-left(data-tooltip='Mínimo 6 caracteres')
+                                                        i.fa.fa-times-circle(ng-class="{'fa-check-circle': check.pass.length >= '6'}")
 
-                            .columns
-                                .column.col-12
-                                    label.form-switch
-                                        input(type='checkbox')
-                                        i.form-icon
-                                        |  Liberado
+                                            label.form-label.column.col-6(for='input-example-1') Senha novamente
+                                                .input-group
+                                                    input.form-input(type='password', ng-init='check.passCompare = []', ng-model='check.passCompare')
+                                                    button.btn.cursor-default.btn-primary.input-group-btn.tooltip.tooltip-left(data-tooltip="Repita a senha")
+                                                        i.fa.fa-times-circle(ng-class="{'fa-check-circle': check.pass == check.passCompare}")
 
-                    #permission-data(ng-class="{'display-block': tab.active == '2', 'display-none': tab.active != '2'}")
-                        .form-group.container
-                            .columns.select
-                                select.form-select.col-6
-                                    option(value='0' disabled='disabled' selected='selected') Nível administrativo
-                                    option(value='1') Operador
-                                    option(value='2') Editor
-                                    option(value='3') Gerente
-                                    option(value='9') Administrador
+                                        .columns
+                                            label.form-label.column.col-12(for='input-example-3') Descrição
+                                                textarea.form-input(placeholder='Fale um pouco sobre o usuário...', rows='7')
 
-                            .columns
-                                .column.col-12
-                                    label.form-switch
-                                        input(type='checkbox')
-                                        i.form-icon
-                                        |  Criar registros
+                                        .columns
+                                            label.form-label.column.col-12 Sexo
+                                                br
+                                                label.form-radio
+                                                    input(type='radio', name='gender')
+                                                    i.form-icon
+                                                    |  Masculino
 
-                            .columns
-                                .column.col-12
-                                    label.form-switch
-                                        input(type='checkbox')
-                                        i.form-icon
-                                        |  Deletar registros
+                                                label.form-radio
+                                                    input(type='radio', name='gender')
+                                                    i.form-icon
+                                                    |  Feminino
 
-                            .columns
-                                .column.col-12
-                                    label.form-switch
-                                        input(type='checkbox')
-                                        i.form-icon
-                                        |  Visualizar registros
+                                                label.form-radio
+                                                    input(type='radio', name='gender', checked='')
+                                                    i.form-icon
+                                                    |  Outro
 
-                            .columns
-                                .column.col-12
-                                    label.form-switch
-                                        input(type='checkbox')
-                                        i.form-icon
-                                        |  Abrir registros individualmente
+                                        .columns
+                                            .column.col-12
+                                                label.form-switch
+                                                    input(type='checkbox')
+                                                    i.form-icon
+                                                    |  Liberado
 
-                            .columns
-                                .column.col-12
-                                    label.form-switch
-                                        input(type='checkbox')
-                                        i.form-icon
-                                        |  Salvar edições
+                                #permission-data(ng-class="{'display-block': tab.active == '2', 'display-none': tab.active != '2'}")
+                                    .form-group.container
+                                        .columns.select
+                                            select.form-select.col-6
+                                                option(value='0' disabled='disabled' selected='selected') Nível administrativo
+                                                option(value='1') Operador
+                                                option(value='2') Editor
+                                                option(value='3') Gerente
+                                                option(value='9') Administrador
 
-                    #log-data(ng-class="{'display-block': tab.active == '3', 'display-none': tab.active != '3'}")
-                        .form-group.container
-                            .columns
-                                label.form-label.column.col-12(for='input-example-3') Últimas 100 atividades do usuário
-                                    textarea.form-input(readonly='readonly' placeholder='Informações do log', rows='27')
-                    #page-action
-                        .form-group.container
-                            .columns
-                                .btn-group.btn-group-block.column.col-12
-                                    button.btn Cancelar
-                                    button.btn Salvar
-                                    button.btn Excluir
+                                        .columns
+                                            .column.col-12
+                                                label.form-switch
+                                                    input(type='checkbox')
+                                                    i.form-icon
+                                                    |  Criar registros
+
+                                        .columns
+                                            .column.col-12
+                                                label.form-switch
+                                                    input(type='checkbox')
+                                                    i.form-icon
+                                                    |  Deletar registros
+
+                                        .columns
+                                            .column.col-12
+                                                label.form-switch
+                                                    input(type='checkbox')
+                                                    i.form-icon
+                                                    |  Visualizar registros
+
+                                        .columns
+                                            .column.col-12
+                                                label.form-switch
+                                                    input(type='checkbox')
+                                                    i.form-icon
+                                                    |  Abrir registros individualmente
+
+                                        .columns
+                                            .column.col-12
+                                                label.form-switch
+                                                    input(type='checkbox')
+                                                    i.form-icon
+                                                    |  Salvar edições
+
+                                #log-data(ng-class="{'display-block': tab.active == '3', 'display-none': tab.active != '3'}")
+                                    .form-group.container
+                                        .columns
+                                            label.form-label.column.col-12(for='input-example-3') Últimas 100 atividades do usuário
+                                                textarea.form-input(readonly='readonly' placeholder='Informações do log', rows='27')
+                                #page-action
+                                    .form-group.container
+                                        .columns
+                                            .btn-group.btn-group-block.column.col-12
+                                                button.btn Cancelar
+                                                button.btn Salvar
+                                                button.btn Excluir
