@@ -133,19 +133,29 @@ gulp.task('watch', function () {
         });
     });
 
-    gulp.watch([files.extras.design.debug], function (file) {
-        runSequence('copy:design');
-
-        gulp.watch([files.extras.design.production], function (file) {
-            liveServer.notify.apply(liveServer, [file]);
-        });
-    });
-
     if (files.libs.debug) {
         gulp.watch([files.libs.debug], function (file) {
             runSequence('copy:libs');
 
             gulp.watch([files.libs.production], function (file) {
+                liveServer.notify.apply(liveServer, [file]);
+            });
+        });
+    }
+
+    if (files.extras) {
+        gulp.watch([files.extras.design.debug], function (file) {
+            runSequence('copy:design');
+
+            gulp.watch([files.extras.design.production], function (file) {
+                liveServer.notify.apply(liveServer, [file]);
+            });
+        });
+
+        gulp.watch([files.extras.css.src], function (file) {
+            runSequence('copy:css');
+
+            gulp.watch([files.extras.css.dest], function (file) {
                 liveServer.notify.apply(liveServer, [file]);
             });
         });
@@ -246,6 +256,15 @@ gulp.task('copy:css', function () {
 
 gulp.task('copy:libs', function () {
     return gulp.src(files.libs.src)
+    .pipe(jsValidate())
+    .pipe($.minify({
+        ext:{
+            min:'.min.js'
+        },
+        noSource: true,
+        preserveComments: ['some'],
+        mangle: false
+    }))
     .pipe(gulp.dest(files.libs.dest));
 });
 

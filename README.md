@@ -71,6 +71,9 @@ npm run serve
 ##### Spectre CSS
 ###### https://picturepan2.github.io/spectre/
 
+##### NanoScroller
+###### http://jamesflorentino.github.io/nanoScrollerJS/
+
 ##### LESS
 ###### http://lesscss.org/
 

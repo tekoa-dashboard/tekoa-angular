@@ -2,134 +2,147 @@
     position: relative;
 
     height: 100%;
+    min-height: 100%;
 
     background: @black-2;
 
     .flex(column, flex-start, flex-start);
 
-    & > #profile-info {
-        position: relative;
-
-        display: block;
-        overflow: hidden;
-
+    & > #nav-info {
         width: calc(~'100% + ' 1.4em);
-        height: @pixel-proportion * 20;
-        min-height: @pixel-proportion * 20;
+        height: calc(~'100% + ' 1.4em);
+        min-height: 100%;
         margin-top: -.7em;
+        margin-bottom: -1.3em;
         margin-left: -.7em;
 
-        & > #profile-background {
-            position: absolute;
-            z-index: 1;
+        & > .nano > .nano-content > #profile-info {
+            position: relative;
 
-            width: 100%;
+            display: block;
+            overflow: hidden;
+
+            width: calc(~'100% + ' 1.4em);
             height: @pixel-proportion * 20;
+            min-height: @pixel-proportion * 20;
+            margin-top: -.7em;
+            margin-left: -.7em;
 
-            opacity: .8;
-            background-position: center;
-            background-size: cover;
+            & > #profile-background {
+                position: absolute;
+                z-index: 1;
 
-            -webkit-filter: blur(10px);
-               -moz-filter: blur(10px);
-                 -o-filter: blur(10px);
-                -ms-filter: blur(10px);
-                    filter: blur(10px);
-        }
+                width: 100%;
+                height: @pixel-proportion * 20;
 
-        & > #profile-card {
-            z-index: 2;
+                opacity: .8;
+                background-position: center;
+                background-size: cover;
 
-            width: 100%;
-            height: @pixel-proportion * 20;
-            padding: @pixel-proportion * 2;
-
-            .flex(row, flex-start, center);
-            .border-box;
-
-            & > figure {
-                position: relative;
-                z-index: 2;
-
-                min-width: 6.4rem;
-                min-height: 6.4rem;
+                -webkit-filter: blur(10px);
+                   -moz-filter: blur(10px);
+                     -o-filter: blur(10px);
+                    -ms-filter: blur(10px);
+                        filter: blur(10px);
             }
 
-            & > #user-info {
+            & > #profile-card {
                 z-index: 2;
 
-                margin-left: @pixel-proportion * 2;
+                width: 100%;
+                height: @pixel-proportion * 20;
+                padding: @pixel-proportion * 2;
 
-                .flex(column, center, flex-start);
+                .flex(row, flex-start, center);
+                .border-box;
 
-                & > h6 {
-                    margin: 0;
-                    margin-bottom: @pixel-proportion / 2;
+                & > figure {
+                    position: relative;
+                    z-index: 2;
 
-                    color: @white-1;
+                    min-width: 6.4rem;
+                    min-height: 6.4rem;
                 }
 
-                & > small,
-                .mini,
-                .level {
-                    font-size: .8em;
+                & > #user-info {
+                    z-index: 2;
 
-                    opacity: .4;
-                }
+                    margin-left: @pixel-proportion * 2;
 
-                & > .level {
-                    .uper-case;
-                }
-            }
-        }
-    }
+                    .flex(column, center, flex-start);
 
-    & > #menu-itens {
-        position: relative;
+                    & > h6 {
+                        margin: 0;
+                        margin-bottom: @pixel-proportion / 2;
 
-        display: block;
-        overflow-y: scroll;
-
-        width: calc(~'100% + ' 1.4em);
-        margin-bottom: -.7em;
-        margin-left: -.7em;
-
-        flex: 1 1 auto;
-
-        & > ul {
-            margin: 0;
-            & > li {
-                margin: 0;
-
-                border-bottom: 1px solid @black-1;
-                background-color: @black-2;
-
-                .transition(.2s);
-                &:hover {
-                    background-color: @black-1;
-
-                    & > a {
-                        opacity: 1;
                         color: @white-1;
                     }
+
+                    & > small,
+                    .mini,
+                    .level {
+                        font-size: .8em;
+
+                        opacity: .4;
+                    }
+
+                    & > .level {
+                        .uper-case;
+                    }
                 }
+            }
+        }
 
-                & > a {
-                    display: inline-block;
+        & > .nano > .nano-content > #menu-itens {
+            position: relative;
 
-                    width: 100%;
-                    padding: @pixel-proportion * 2;
-                    padding-left: @pixel-proportion * 4;
+            display: block;
 
-                    opacity: .6;
-                    color: @accent-color;
+            width: calc(~'100% + ' 1.4em);
+            margin-bottom: -.7em;
+            margin-left: -.7em;
+
+            flex: 1 1 auto;
+
+            & > ul {
+                display: block;
+
+                margin: 0;
+                & > li {
+                    display: block;
+
+                    margin: 0;
+
+                    border-bottom: 1px solid @black-1;
+                    background-color: @black-2;
 
                     .transition(.2s);
-                    .uper-case;
-                    & > i {
-                        font-size: 1em;
+                    &:hover {
+                        background-color: @black-1;
 
-                        margin-right: @pixel-proportion * 2;
+                        & > a {
+                            opacity: 1;
+                            color: @white-1;
+                        }
+                    }
+
+                    & > a {
+                        display: inline-block;
+
+                        width: 100%;
+                        padding: @pixel-proportion * 2;
+                        padding-left: @pixel-proportion * 4;
+
+                        opacity: .6;
+                        color: @accent-color;
+
+                        .transition(.2s);
+                        .uper-case;
+                        & > i {
+                            font-size: 1em;
+
+                            margin-right: @pixel-proportion * 2;
+                        }
                     }
                 }
             }

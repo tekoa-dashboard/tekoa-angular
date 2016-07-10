@@ -1,6 +1,6 @@
 'use strict';
 
-var tekoa = angular.module('tekoa', ['ngResource', 'ngRoute', 'ngSanitize'])
+var tekoa = angular.module('tekoa', ['ngResource', 'ngRoute', 'ngSanitize', 'sun.scrollable'])
 .run(['$rootScope', function($rootScope){
   //Uma flag que define se o ícone de acesso ao servidor deve estar ativado
   $rootScope.showLoaderFlag = false;
