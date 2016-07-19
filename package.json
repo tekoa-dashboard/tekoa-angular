@@ -7,6 +7,10 @@
     "build": "gulp build",
     "serve": "DEBUG=gulp-live-server gulp serve"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tekoa-dashboard/tekoa-angular.git"
+  },
   "author": "Luigui Delyer",
   "license": "MIT",
   "devDependencies": {
