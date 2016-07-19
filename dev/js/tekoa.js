@@ -27,18 +27,18 @@ var tekoa = angular.module('tekoa', ['ngResource', 'ngRoute', 'ngSanitize', 'sun
 .config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
   $routeProvider
   .when('/home', {
-    templateUrl: '/templates/home/home.html',
+    templateUrl: 'templates/home/home.html',
     controller: 'homeController'
   })
   .when('/users', {
-    templateUrl: '/templates/users/users.html',
+    templateUrl: 'templates/users/users.html',
     controller: 'usersController'
   })
   .when('/users/:id', {
-    templateUrl: '/templates/users/users.html',
+    templateUrl: 'templates/users/users.html',
     controller: 'usersController'
   })
   .otherwise({
-    redirectTo: '/login'
+    redirectTo: '/users'
   });
 }]);

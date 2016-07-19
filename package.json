@@ -2,7 +2,7 @@
   "name": "tekoa-angular",
   "version": "1.0.0",
   "description": "The official front-end client of the Tekoá, the fully dynamic dashboard",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "build": "gulp build",
     "serve": "DEBUG=gulp-live-server gulp serve"
