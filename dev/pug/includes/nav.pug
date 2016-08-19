@@ -1,6 +1,6 @@
 #nav.column.col-xs-3
     #nav-info(scrollable)
-        #profile-info
+        .profile-info-small
             #profile-background(style='background-image:url(design/profile.jpg)')
             #profile-card
                 figure.avatar.avatar-xl
@@ -11,9 +11,9 @@
                     h6.mini luigui@wedologos.com.br
                     small.label WeDoLogos
 
-        #menu-itens
+        .list-itens.nav-list
             mixin section(url, icon, name)
-                li
+                li.icon-item
                     a(href=url)
                         i(class='fa fa-' + icon)
                         =name

@@ -1,6 +1,6 @@
 /*************************************************************************************************|
 |   TEKOÁ - LUIGUI DELYER@S1X - luigui@s1x.com.br                                                 |
-|   BITBUCKET REPO =                                                                              |
+|   GITHUB REPO = https://github.com/tekoa-dashboard/tekoa-angular.git                            |
 |   NPM DEPENDENCES: {                                                                            |
 |       "gulp": "^3.9.0",                                                                         |
 |       "gulp-autoprefixer": "^3.1.0",                                                            |
@@ -19,67 +19,13 @@
 |*************************************************************************************************/
 
 //ALL FUNCTIONS AND MIXINS
-@import 'basic-functions.less';
+@import './_basic-functions.less';
 
-//BUTTONS
-@import 'buttons.less';
+//STRUCTURE BASE
+@import './templates/_structure-base.less';
 
 //ALL COLORS
-@import 'color-palette.less';
+@import './atoms/_color-palette.less';
 
-//NAV
-@import 'nav.less';
-
-//MEDIA QUERY SMALL SCREENS
-@media only screen and (max-width: 640px) {
-    //TEMPLATES SECTIONS
-    @import 'templates-small-screen.less';
-}
-
-//MEDIA QUERY MEDIUM SCREENS
-@media only screen and (min-width: 641px) and (max-width: 1024px) {
-    //TEMPLATES SECTIONS
-    @import 'templates-medium-screen.less';
-}
-
-//MEDIA QUERY LARGE/BIG SCREENS
-@media only screen and (min-width: 1025px) {
-    //TEMPLATES SECTIONS
-    @import 'templates-big-screen.less';
-}
-
-
-
-html,
-body {
-    position: absolute;
-
-    width: 100%;
-    min-width: 100%;
-    height: 100%;
-    min-height: 100%;
-    // background: linear-gradient(to bottom, @color-1, @color-2 @pixel-proportion * 16, @grey-3 @pixel-proportion * 16);
-
-    background: linear-gradient(to bottom, @color-1, @color-1 @pixel-proportion * 16, @grey-3 @pixel-proportion * 16);
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-
-    .border-box;
-    text-rendering: optimizeLegibility;
-}
-
-body {
-    padding: 2%;
-    padding-right: 4%;
-    padding-left: 4%;
-}
-
-.app-content {
-    height: 100%;
-    & > .container {
-        height: 100%;
-        & > .columns {
-            height: 100%;
-        }
-    }
-}
+//PAGES
+@import './pages/_users.less';

@@ -1,0 +1,80 @@
+.molecule-profile-info-small {
+    position: relative;
+
+    display: block;
+    overflow: hidden;
+
+    width: calc(~'100% + ' 1.4em);
+    height: @pixel-proportion * 20;
+    min-height: @pixel-proportion * 20;
+    margin-top: -.7em;
+    margin-left: -.7em;
+
+    & > #profile-background {
+        position: absolute;
+        z-index: 1;
+
+        width: 100%;
+        height: @pixel-proportion * 20;
+
+        opacity: .8;
+        background-position: center;
+        background-size: cover;
+
+        -webkit-filter: blur(10px);
+           -moz-filter: blur(10px);
+             -o-filter: blur(10px);
+            -ms-filter: blur(10px);
+                filter: blur(10px);
+    }
+
+    & > #profile-card {
+        z-index: 2;
+
+        width: 100%;
+        height: @pixel-proportion * 20;
+        padding: @pixel-proportion * 2;
+
+        .flex(row, flex-start, center);
+        .border-box;
+
+        & > figure {
+            position: relative;
+            z-index: 2;
+
+            min-width: 6.4rem;
+            min-height: 6.4rem;
+        }
+
+        & > #user-info {
+            z-index: 2;
+
+            margin-left: @pixel-proportion * 2;
+
+            .flex(column, center, flex-start);
+
+            & > h6 {
+                margin: 0;
+                margin-bottom: @pixel-proportion / 2;
+
+                color: @white-1;
+            }
+
+            & > small,
+            .mini,
+            .level {
+                font-size: .8em;
+
+                opacity: .4;
+            }
+
+            & > .level {
+                .upper-case;
+            }
+        }
+    }
+}
+
+.profile-info-small {
+    .molecule-profile-info-small();
+}

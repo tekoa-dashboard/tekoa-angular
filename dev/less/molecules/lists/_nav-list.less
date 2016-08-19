@@ -1,0 +1,29 @@
+.molecules-nav-list {
+    & > ul {
+        display: block;
+
+        margin: 0;
+
+        @import '../../atoms/list-itens/_icon-item.less';
+
+        & > li {
+            background-color: @grey-1;
+
+            & > a {
+                color: @grey-3;
+            }
+
+            &:hover {
+                background-color: lighten(@grey-1, 10%);
+
+                & > a {
+                    color: @white-1;
+                }
+            }
+        }
+    }
+}
+
+.nav-list {
+    .molecules-nav-list();
+}

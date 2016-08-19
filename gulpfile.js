@@ -36,7 +36,7 @@ var files = {
     less: {
         src: paths.debug + 'less/' + app.name + '.less',
         dest: paths.production + 'css',
-        debug: paths.debug + 'less/*.less',
+        debug: paths.debug + 'less/**/*.less',
         production: paths.production + 'css/' + app.name + '.min.css',
     },
     templates: {

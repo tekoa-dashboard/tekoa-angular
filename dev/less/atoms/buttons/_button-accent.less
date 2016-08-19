@@ -1,4 +1,4 @@
-#accent-button {
+.atom-accent {
     position: absolute;
     z-index: 9;
     right: @pixel-proportion;
@@ -24,31 +24,6 @@
     }
 }
 
-#close-tab {
-    position: absolute;
-    z-index: 9;
-    right: 0;
-
-    opacity: .5;
-
-    .transition(.2s);
-
-    & > a {
-        font-size: 2.5rem;
-
-        width: 5.5rem;
-        height: 5.5rem;
-        padding: 0;
-
-        color: @white-1;
-        border: 0;
-        border-radius: 50%;
-        // background: @transparent;
-
-        .flex(row, center, center);
-    }
-
-    &:hover {
-        opacity: .9;
-    }
+&--accent {
+    .atom-accent() !important;
 }
