@@ -7,9 +7,6 @@
     margin-left: @pixel-proportion * 3;
     padding: 0;
 
-    opacity: .8;
-    color: @white-1;
-
     .upper-case;
 }
 
@@ -20,10 +17,6 @@
 
     width: 100%;
     height: 100%;
-
-    border-radius: @pixel-proportion / 2;
-    background: @white-1;
-    box-shadow: 0 0 10px @black-4;
 }
 
 .flex-section {
@@ -54,8 +47,6 @@
             & > .tab {
                 margin: 0;
                 margin-top: @pixel-proportion * 2;
-
-                background-color: @white-1;
             }
         }
         #all-data {
@@ -69,16 +60,13 @@
             #header-bar {
                 width: 100%;
 
-                border-bottom: 1px solid @black-5;
-                background-color: @grey-3;
-
-                .transition(.2s);
+                border-bottom-width: 1px;
+                border-bottom-style: solid;
 
                 & > .input-group {
                     padding: @pixel-proportion - 2;
                     padding-bottom: 3px;
 
-                    .transition(.2s);
                     .border-box;
                 }
 
@@ -91,7 +79,6 @@
                     padding-right: @pixel-proportion - 2;
                     padding-left: @pixel-proportion - 2;
 
-                    .transition(.2s);
                     .border-box;
                 }
             }
@@ -117,7 +104,8 @@
 
                         margin: 0;
 
-                        border-bottom: 1px solid @grey-3;
+                        border-bottom-width: 1px;
+                        border-bottom-style: solid;
 
                         .cursor-pointer;
 
@@ -130,14 +118,14 @@
 
                             padding: @pixel-proportion * 2;
 
-                            color: @grey-1;
-                            border-left: 0 solid @color-1;
+                            border-left-width: 0;
+                            border-left-style: solid;
 
-                            .transition(.1s);
                             .flex(row, flex-start, center);
 
                             &:hover {
-                                border-left: @pixel-proportion solid @color-3;
+                                border-left-width: @pixel-proportion;
+                                border-left-style: solid;
                             }
 
                             & > figure {
@@ -149,10 +137,8 @@
                                     font-size: .6em;
                                     font-weight: 900;
 
-                                    color: @white-1;
-                                    border: 2px solid @white-1;
-                                    border-radius: 50%;
-                                    background-color: @color-1;
+                                    border-width: 2px;
+                                    border-style: solid;
 
                                     .flex(row,center,center);
                                 }
@@ -166,8 +152,6 @@
                                 & > h6:first-child {
                                     font-size: .9em;
                                     font-weight: 900;
-
-                                    color: @color-1;
 
                                     .upper-case;
                                 }
@@ -188,8 +172,6 @@
 
                                     white-space: nowrap;
                                     text-overflow: ellipsis;
-
-                                    color: @black-3;
                                 }
                             }
                         }
@@ -212,8 +194,8 @@
 
             margin-bottom: -1.4em;
 
-            border-left: 1px solid @black-6;
-            box-shadow: 0 0 30px @black-5;
+            border-left-width: 1px;
+            border-left-style: solid;
 
             .flex(column, flex-start, flex-start);
 
@@ -238,24 +220,12 @@
                     height: @pixel-proportion * 40;
                     min-height: @pixel-proportion * 40;
 
-                    background: @grey-1;
-
                     & > #user-background {
                         position: absolute;
                         z-index: 1;
 
                         width: 100%;
                         height: @pixel-proportion * 40;
-
-                        opacity: .8;
-                        background-position: center;
-                        background-size: cover;
-
-                        -webkit-filter: blur(10px);
-                           -moz-filter: blur(10px);
-                             -o-filter: blur(10px);
-                            -ms-filter: blur(10px);
-                                filter: blur(10px);
                     }
 
                     & > #user-card {
@@ -288,16 +258,12 @@
                             & > h6 {
                                 margin: 0;
                                 margin-bottom: @pixel-proportion / 2;
-
-                                color: @white-1;
                             }
 
                             & > small,
                             .mini,
                             .level {
                                 font-size: .8em;
-
-                                opacity: .4;
                             }
 
                             & > .level {

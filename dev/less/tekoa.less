@@ -22,10 +22,33 @@
 @import './_basic-functions.less';
 
 //STRUCTURE BASE
+@import './pages/_structure-base.less';
 @import './templates/_structure-base.less';
 
 //ALL COLORS
 @import './atoms/_color-palette.less';
 
+//NAV
+@import './organisms/_nav.less';
+
 //PAGES
-@import './pages/_users.less';
+//MEDIA QUERY SMALL SCREENS
+@media only screen and (max-width: 640px) {
+    //USERS
+    // @import './pages/users/_users-small-screen.less';
+    // @import './templates/users/_users-small-screen.less';
+}
+
+//MEDIA QUERY MEDIUM SCREENS
+@media only screen and (min-width: 641px) and (max-width: 1024px) {
+    //USERS
+    // @import './pages/users/_users-medium-screen.less';
+    // @import './templates/users/_users-medium-screen.less';
+}
+
+//MEDIA QUERY LARGE/BIG SCREENS
+@media only screen and (min-width: 1025px) {
+    //USERS
+    @import './pages/users/_users-big-screen.less';
+    @import './templates/users/_users-big-screen.less';
+}
