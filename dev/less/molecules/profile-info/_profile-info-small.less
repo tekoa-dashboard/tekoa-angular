@@ -4,11 +4,9 @@
     display: block;
     overflow: hidden;
 
-    width: calc(~'100% + ' 1.4em);
+    width: 100%;
     height: @pixel-proportion * 20;
     min-height: @pixel-proportion * 20;
-    margin-top: -.7em;
-    margin-left: -.7em;
 
     & > #profile-background {
         position: absolute;
@@ -75,6 +73,6 @@
     }
 }
 
-.profile-info-small {
+& > .profile-info-small {
     .molecule-profile-info-small();
 }

@@ -25,7 +25,7 @@
 
                 .columns.content-section
                     #all-data.column(ng-init="actualRoute ? content.column = 'true' : content.column = 'false'", ng-class="{'col-xs-4': content.column == 'true', 'col-xs-12': content.column == 'false'}")
-                        #header-bar
+                        .header-bar
                             .input-group
                                 input.form-input(type='text', placeholder='Pesquisar usuários')
                                 button.btn.btn-primary.input-group-btn
@@ -39,31 +39,32 @@
                                     button.btn.btn-sm(ng-class="{'btn-primary': filter.type3 == 'true'}", ng-init="filter.type3 = 'false'", ng-click="filter.type3 = { 'true': 'false', 'false': 'true'}[filter.type3]")  Status
 
                         #list-section(scrollable)
-                            mixin section(url, id, status, name, description)
-                                li
-                                    a(href= url)
-                                        figure.avatar.avatar-lg
-                                            img(src='design/profile.jpg')
-                                            span.avatar-icon= id
-                                        #info
-                                            h6= status
-                                            h5= name
-                                            h6.mini= description
+                            .content-list
+                                mixin section(url, id, status, name, description)
+                                    li
+                                        a(href= url)
+                                            figure.avatar.avatar-lg
+                                                img(src='design/profile.jpg')
+                                                span.avatar-icon= id
+                                            #info
+                                                h6= status
+                                                h5= name
+                                                h6.mini= description
 
-                            ul
-                                +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
-                                +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
-                                +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
-                                +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
-                                +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
-                                +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
-                                +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
-                                +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
-                                +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
-                                +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
-                                +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
-                                +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
-                                +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
+                                ul
+                                    +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
+                                    +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
+                                    +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
+                                    +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
+                                    +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
+                                    +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
+                                    +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
+                                    +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
+                                    +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
+                                    +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
+                                    +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
+                                    +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
+                                    +section('#/users/1234', '9', 'liberado', 'Luigui Delyer Pio Cremon', 'Um menino diferente, esse deveria ganhar dinheiro com o que tá fazendo!')
                         .button-accent
                             a(ng-click="content.column = 'true'")
                                 button.btn.btn-primary.btn-lg
@@ -73,7 +74,7 @@
                         #pane-info(scrollable)
                             #user-info
                                 .button-close-tab
-                                    a(href='#/users')
+                                    a(ng-click="content.column = 'false'", href='#/users')
                                         i.fa.fa-times
 
                                 #user-background(style='background-image:url(design/profile.jpg)')

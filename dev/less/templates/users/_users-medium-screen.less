@@ -1,0 +1,283 @@
+.flex-section {
+    width: 100%;
+    height: 100%;
+
+    .flex(column,flex-start, flex-start);
+
+    & > .header-section {
+        width: calc(~'100% + ' 1.5em);
+        padding: 0;
+    }
+
+    & > .content-section {
+        width: calc(~'100% + ' 1.5em);
+        padding: 0;
+
+        flex: 1 1 auto;
+    }
+}
+
+#full-section {
+    padding: 0;
+    & > .container > .columns {
+        #header-data {
+            padding: 0;
+
+            & > .tab {
+                margin: 0;
+                margin-top: @pixel-proportion * 2;
+            }
+        }
+        #all-data {
+            position: relative;
+
+            margin-right: -2px;
+            padding: 0;
+
+            .flex(column, flex-start, flex-start);
+
+            #header-bar {
+                width: 100%;
+
+                border-bottom-width: 1px;
+                border-bottom-style: solid;
+
+                & > .input-group {
+                    padding: @pixel-proportion - 2;
+                    padding-bottom: 3px;
+
+                    .border-box;
+                }
+
+                & > #filter-section {
+                    overflow: hidden;
+
+                    max-height: 0;
+                    padding: 0;
+                    padding-top: 3px;
+                    padding-right: @pixel-proportion - 2;
+                    padding-left: @pixel-proportion - 2;
+
+                    .border-box;
+                }
+            }
+
+            .filter-show {
+                max-height: 100% !important;
+                padding-bottom: @pixel-proportion - 2 !important;
+            }
+
+            #list-section {
+                width: 100%;
+                height: 100%;
+
+                flex: 1 1 auto;
+
+
+                & > .nano > .nano-content {
+                    & > ul {
+                        width: 100%;
+                        height: 100%;
+                        margin: 0;
+
+                        & > li {
+                            overflow: hidden;
+
+                            margin: 0;
+
+                            border-bottom-width: 1px;
+                            border-bottom-style: solid;
+
+                            .cursor-pointer;
+
+                            & .mini {
+                                font-size: .9em;
+                            }
+
+                            & > a {
+                                overflow: hidden;
+
+                                padding: @pixel-proportion * 2;
+
+                                border-left-width: 0;
+                                border-left-style: solid;
+
+                                .flex(row, flex-start, center);
+
+                                &:hover {
+                                    border-left-width: @pixel-proportion;
+                                    border-left-style: solid;
+                                }
+
+                                & > figure {
+                                    min-width: 4.8rem;
+                                    min-height: 4.8rem;
+                                    margin-right: @pixel-proportion;
+
+                                    & > span {
+                                        font-size: .6em;
+                                        font-weight: 900;
+
+                                        border-width: 2px;
+                                        border-style: solid;
+
+                                        .flex(row,center,center);
+                                    }
+                                }
+
+                                & > #info {
+                                    overflow: hidden;
+
+                                    width: 100%;
+
+                                    & > h6:first-child {
+                                        font-size: .9em;
+                                        font-weight: 900;
+
+                                        .upper-case;
+                                    }
+                                    & > h5 {
+                                        overflow: hidden;
+
+                                        padding-bottom: @pixel-proportion / 4;
+
+                                        white-space: nowrap;
+                                        text-overflow: ellipsis;
+                                    }
+                                    & > h6:last-child {
+                                        font-weight: 500;
+
+                                        overflow: hidden;
+
+                                        padding-bottom: @pixel-proportion / 4;
+
+                                        white-space: nowrap;
+                                        text-overflow: ellipsis;
+                                    }
+                                }
+                            }
+
+                            & > h1,
+                            h2,
+                            h3,
+                            h4,
+                            h5,
+                            h6 {
+                                margin: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        #one-data {
+            position: relative;
+
+            margin-bottom: -1.4em;
+
+            border-left-width: 1px;
+            border-left-style: solid;
+
+            .flex(column, flex-start, flex-start);
+
+            & > #pane-info {
+                position: relative;
+
+                display: block;
+                overflow: hidden;
+
+                width: calc(~'100% + ' 1.4em);
+                height: 100%;
+                min-height: 100%;
+                margin-top: -.7em;
+                margin-left: -.7em;
+
+                & > .nano > .nano-content > #user-info {
+                    position: relative;
+
+                    display: block;
+                    overflow: hidden;
+
+                    height: @pixel-proportion * 40;
+                    min-height: @pixel-proportion * 40;
+
+                    & > #user-background {
+                        position: absolute;
+                        z-index: 1;
+
+                        width: 100%;
+                        height: @pixel-proportion * 40;
+                    }
+
+                    & > #user-card {
+                        z-index: 2;
+
+                        width: 100%;
+                        height: @pixel-proportion * 40;
+                        padding: @pixel-proportion * 4;
+
+                        .flex(column, center, center);
+                        .border-box;
+
+                        & > figure {
+                            position: relative;
+                            z-index: 2;
+
+                            width: 20rem;
+                            min-width: 20rem;
+                            height: 20rem;
+                            min-height: 20rem;
+                        }
+
+                        & > #user-data {
+                            z-index: 2;
+
+                            margin-top: @pixel-proportion * 2;
+
+                            .flex(column, center, center);
+
+                            & > h6 {
+                                margin: 0;
+                                margin-bottom: @pixel-proportion / 2;
+                            }
+
+                            & > small,
+                            .mini,
+                            .level {
+                                font-size: .8em;
+                            }
+
+                            & > .level {
+                                .upper-case;
+                            }
+                        }
+                    }
+                }
+
+                & > .nano > .nano-content > #page-info {
+                    width: 100%;
+                    padding: @pixel-proportion;
+
+                    & > #personal-data {
+                        margin-top: @pixel-proportion;
+                    }
+
+                    & > #permission-data {
+                        // display: none;
+
+                        & > .form-group {
+                            & > .select {
+                                padding: @pixel-proportion + 2;
+                            }
+                        }
+                    }
+
+                    & > #log-data {
+                        // display: none;
+                    }
+                }
+            }
+        }
+    }
+}

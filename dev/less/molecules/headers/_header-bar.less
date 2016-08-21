@@ -1,0 +1,45 @@
+.molecule-header-bar {
+    width: 100%;
+
+    border-color: @black-5;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    background-color: @grey-3;
+
+    .transition(.2s);
+
+    & > .input-group {
+        padding: @pixel-proportion - 2;
+        padding-bottom: 3px;
+
+        .transition(.2s);
+        .border-box;
+    }
+
+    & > #filter-section {
+        overflow: hidden;
+
+        max-height: 0;
+        padding: 0;
+        padding-top: 3px;
+        padding-right: @pixel-proportion - 2;
+        padding-left: @pixel-proportion - 2;
+
+        .transition(.2s);
+        .border-box;
+    }
+}
+
+.extension-filter-show {
+    max-height: 100% !important;
+    padding-bottom: @pixel-proportion - 2 !important;
+}
+
+
+& > .header-bar {
+    .molecule-header-bar();
+
+    > .filter-show {
+        .extension-filter-show();
+    }
+}

@@ -1,20 +1,12 @@
 .organism-nav {
-    position: relative;
-
-    height: 100%;
-    min-height: 100%;
+    padding: 0;
 
     background: @grey-1;
-
-    .flex(column, flex-start, flex-start);
-
     & > #nav-info {
-        width: calc(~'100% + ' 1.4em);
-        height: calc(~'100% + ' 1.4em);
-        min-height: 100%;
-        margin-top: -.7em;
-        margin-bottom: -1.3em;
-        margin-left: -.7em;
+        width: 100%;
+        height: 100%;
+
+        .flex(row, center, center);
 
         & > .nano > .nano-content {
             @import '../molecules/profile-info/_profile-info-small.less';
