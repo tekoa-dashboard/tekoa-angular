@@ -89,8 +89,10 @@ gulp.task('serve', function (cb) {
 
 gulp.task('start:server', function(done) {
     liveServer.start();
-    runSequence(['watch']);
-    openURL.open(server.address);
+    setTimeout(function(){
+        runSequence(['watch']);
+        openURL.open(server.address);
+    }, 300);
 });
 
 
