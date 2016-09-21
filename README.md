@@ -2,6 +2,7 @@
 
 # Tekoá | Angular JS
 The official front-end client of the Tekoá, the fully dynamic dashboard
+##### Tekoá on Wiki - https://pt.wikipedia.org/wiki/Tekoá
 
 ### PUG + Angular JS + Spectre CSS + LESS + Gulp
 
